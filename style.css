@@ -1,0 +1,296 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Montserrat", sans-serif;
+    box-sizing: border-box;
+}
+body {
+    background-color: #262626;
+    width: 100vw;
+    height: auto;
+    overflow: hidden;
+}
+nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 10px 20px 10px 20px;
+    border-bottom: 1px solid #424242;
+}
+nav p {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 24px;
+    font-weight: 500;
+    background-image: linear-gradient(to right, #76A5FF, #63F7CA);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+nav ul {
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+    column-gap: 20px;
+    font-size: 12px;
+}
+nav ul li:first-child {
+    color: #31B28B;
+    border-radius: 50%;
+    padding: 10px;
+    
+}
+nav ul li:last-child {
+    color: white;
+    border: 1px solid #31B28B;
+    border-radius: 5px;
+    padding: 10px;
+}
+nav ul li:hover{
+    cursor: pointer;
+    user-select: none;
+}
+nav ul li:last-child:active{
+    border: 1px solid white;
+    outline: 1px solid #fff;
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    width: 100%;
+}
+.dashboard-container {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    width: 100%;
+}
+.dashboard-container h3 {
+    font-size: 14px;
+    font-weight: 500;
+    color: white;
+}
+.dashboard {
+    display: flex;
+    flex-direction: row;
+    width: fit-content;
+    background-color: rgba(49, 178, 139, 0.2);
+    border: 1px solid rgba(49, 178, 139, 1);
+    border-radius: 10px;
+    padding: 10px;
+}
+.dashboard-items {
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+    
+    width: 100%;
+    min-width: 150px;
+    height: 100px;
+    padding: 20px;
+}
+
+.dashboard-items h4 {
+    font-size: 34px;
+    font-weight: 600;
+    color: white;
+}
+.dashboard-items p {
+    font-size: 10px;
+    font-weight: 500;
+    color: white;
+}
+.row-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    margin: 10px 0; /* top/bot left/right */
+}
+.group-container {
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+    column-gap: 10px;
+}
+.group-buttons {
+    padding: 10px 15px;
+    background-color: rgba(49, 178, 139, 0);
+    border: 1px solid rgba(49, 178, 139, 0);
+    border-radius: 5px;
+    font-size: 12px;
+    color: white;
+}
+.group-buttons:active {
+    padding: 10px 15px;
+    background-color: rgba(49, 178, 139, 0.2);
+    border: 1px solid rgba(49, 178, 139, 1);
+    border-radius: 5px;
+    color: white;
+}
+.buttons-container {
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+    column-gap: 10px;
+}
+#search-container {
+    width: 75%;
+    background-color: rgba(66, 66, 66, 0.2);
+    border: 1px solid #424242;
+    border-radius: 5px;
+}
+#search-container input {
+    font-size: 12px;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background-color: transparent;
+    color: white;
+}
+
+.primary-buttons {
+    width: 200px;
+    padding: 10px;
+    background-color: rgba(49, 178, 139, 0.2);
+    border: 1px solid rgba(49, 178, 139, 1);
+    border-radius: 5px;
+    font-size: 12px;
+    color: white;
+    cursor: pointer;
+}
+.table-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 500px;
+    max-height: 500px;
+    scrollbar-width: none;
+    overflow-y: scroll;
+    border: 1px solid #424242;
+    border-radius: 5px;
+    padding: 0px 10px 10px 10px;
+}
+.table-container table {
+    border-collapse: collapse;
+}
+.table-container table thead {
+    text-align: left;
+    position: sticky;
+    top: 0;
+    background-color: #262626;
+}
+.table-container table thead th {
+    font-size: 12px;
+    font-weight: 600;
+    color: rgb(177, 177, 177);
+    width: 15%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.table-container table tbody tr td{
+    border-top: 1px solid #424242;
+    border-bottom: 1px solid #424242;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 12px;
+    color: rgb(177, 177, 177);
+}
+.table-container table tbody tr:hover td{
+    background-color: rgb(58, 58, 58);
+    font-weight: 600;
+    color: #E0A60F;
+}
+.list-button-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    column-gap: 10px;
+    width: 100%;
+}
+#edit-item-button {
+    padding: 0px 10px;
+    background-color: transparent;
+    border: none;
+    font-weight: 500;
+    color: #E0A60F;
+    text-decoration: underline;
+    cursor: pointer;
+}
+#delete-item-button {
+    padding: 0px 10px;
+    background-color: transparent;
+    border: none;
+    font-weight: 500;
+    color: #DD2D2D;
+    text-decoration: underline;
+    cursor: pointer;
+}
+.modal-overlay {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    display: none;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.803);
+}
+.modal-container {
+    position: fixed;
+    z-index: 1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    height: auto;
+    padding: 20px;
+    font-size: 12px;
+    font-weight: 500;
+    color: white;
+    background-color: #262626;
+    border-radius: 5px;
+}
+.modal-container input {
+    height: auto;
+    background-color: rgba(66, 66, 66, 0.2);
+    border: 1px solid #424242;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 12px;
+    color: white;
+    margin: 5px 0;
+}
+.select-group-container {
+    height: auto;
+    background-color: rgba(66, 66, 66, 0.2);
+    border: 1px solid #424242;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px 0;
+}
+.select-group-container select {
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: white;
+}
+.modal-container button{
+    width: 100%;
+}
+.modal-container button:last-child {
+    margin: 10px 0;
+    background-color: transparent;
+    border: none;
+    font-size: 12px;
+    color: white;
+    cursor: pointer;
+}
