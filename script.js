@@ -10,6 +10,22 @@ document.getElementById("all-products").children[0].innerHTML = products;
 document.getElementById("all-groups").children[0].innerHTML = groups;
 document.getElementById("total-stocks").children[0].innerHTML = stocks;
 
+function saveData(){
+    localStorage.setItem("listData", document.getElementById("list").innerHTML);
+}
+function saveDashboard(){
+    localStorage.setItem("dashboardData", document.getElementById("dashboard").innerHTML);
+}
+function retrieveData(){
+    document.getElementById("list").innerHTML = localStorage.getItem("listData");
+}
+function retrieveDashboard(){
+    document.getElementById("dashboard").innerHTML = localStorage.getItem("dashboardData");
+}
+function clearBrowserData(){
+    window.localStorage.clear();
+}
+
 function updateDashboard(){
     //this will update the dashboard count every time a new item is added
     document.getElementById("all-items").children[0].innerHTML = items;
@@ -164,6 +180,8 @@ const addItem = document.getElementById("add-button").addEventListener("click", 
     getItemValue();
     updateDashboard();
     clearInput();
+    saveData();
+    saveDashboard();
 });
 
 //edit/delete item button selector
@@ -171,6 +189,8 @@ const tableButtons = document.getElementById("list").addEventListener("click", (
     e.preventDefault();
     editButton(e);
     deleteButton(e);
+    saveData();
+    saveDashboard();
 });
 
 //search item input box
@@ -188,3 +208,7 @@ const addGroup = document.getElementById("add-group-button").addEventListener("c
         }
     })
 })
+
+retrieveData();
+//retrieveDashboard();
+//clearBrowserData();
