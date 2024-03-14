@@ -11,7 +11,7 @@ body {
     background-color: #262626;
     width: 100vw;
     height: auto;
-    overflow: hidden;
+    overflow-x: scroll;
 }
 nav {
     display: flex;
@@ -68,39 +68,37 @@ nav ul li:last-child:active{
     flex-direction: column;
     row-gap: 10px;
     width: 100%;
+    height: auto;
 }
 .dashboard-container h3 {
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 500;
     color: white;
 }
 .dashboard {
     display: flex;
     flex-direction: row;
-    width: fit-content;
+    width: auto;
+    height: auto;
     background-color: rgba(49, 178, 139, 0.2);
     border: 1px solid rgba(49, 178, 139, 1);
     border-radius: 10px;
-    padding: 10px;
 }
 .dashboard-items {
     display: flex;
     flex-direction: column;
     text-align: right;
-    
-    width: 100%;
-    min-width: 150px;
-    height: 100px;
-    padding: 20px;
+    width: 100px;
+    padding: 10px;
 }
 
 .dashboard-items h4 {
-    font-size: 34px;
+    font-size: 24px;
     font-weight: 600;
     color: white;
 }
 .dashboard-items p {
-    font-size: 10px;
+    font-size: 8px;
     font-weight: 500;
     color: white;
 }
@@ -111,22 +109,26 @@ nav ul li:last-child:active{
     width: 100%;
     margin: 10px 0; /* top/bot left/right */
 }
-.group-container {
+.groups-container {
     display: flex;
     flex-direction: row;
-    width: 50%;
+    width: 100%;
     column-gap: 10px;
+    overflow-y: scroll;
+    scrollbar-width: none;
 }
 .group-buttons {
-    padding: 10px 15px;
+    min-width: 40px;
+    padding: 10px;
     background-color: rgba(49, 178, 139, 0);
     border: 1px solid rgba(49, 178, 139, 0);
     border-radius: 5px;
-    font-size: 12px;
+    font-size: 8px;
     color: white;
+    overflow: hidden;
 }
 .group-buttons:active {
-    padding: 10px 15px;
+    padding: 10px;
     background-color: rgba(49, 178, 139, 0.2);
     border: 1px solid rgba(49, 178, 139, 1);
     border-radius: 5px;
@@ -135,11 +137,11 @@ nav ul li:last-child:active{
 .buttons-container {
     display: flex;
     flex-direction: row;
-    width: 50%;
+    width: 100%;
     column-gap: 10px;
 }
 #search-container {
-    width: 75%;
+    width: 100%;
     background-color: rgba(66, 66, 66, 0.2);
     border: 1px solid #424242;
     border-radius: 5px;
@@ -154,12 +156,12 @@ nav ul li:last-child:active{
 }
 
 .primary-buttons {
-    width: 200px;
+    width: 160px;
     padding: 10px;
     background-color: rgba(49, 178, 139, 0.2);
     border: 1px solid rgba(49, 178, 139, 1);
     border-radius: 5px;
-    font-size: 12px;
+    font-size: 8px;
     color: white;
     cursor: pointer;
 }
@@ -185,7 +187,7 @@ nav ul li:last-child:active{
     background-color: #262626;
 }
 .table-container table thead th {
-    font-size: 12px;
+    font-size: 8px;
     font-weight: 600;
     color: rgb(177, 177, 177);
     width: 15%;
@@ -197,7 +199,7 @@ nav ul li:last-child:active{
     border-bottom: 1px solid #424242;
     padding-top: 10px;
     padding-bottom: 10px;
-    font-size: 12px;
+    font-size: 8px;
     color: rgb(177, 177, 177);
 }
 .table-container table tbody tr:hover td{
@@ -249,7 +251,7 @@ nav ul li:last-child:active{
     overflow: auto;
     display: flex;
     flex-direction: column;
-    width: 500px;
+    width: 300px;
     height: auto;
     padding: 20px;
     font-size: 12px;
@@ -285,6 +287,7 @@ nav ul li:last-child:active{
 }
 .modal-container button{
     width: 100%;
+    font-size: 12px;
 }
 .modal-container button:last-child {
     margin: 10px 0;
@@ -293,4 +296,237 @@ nav ul li:last-child:active{
     font-size: 12px;
     color: white;
     cursor: pointer;
+}
+
+
+@media screen and (min-width: 476px){
+    .dashboard-container h3 {
+        font-size: 14px;
+        font-weight: 500;
+        color: white;
+    }
+    .dashboard {
+        display: flex;
+        flex-direction: row;
+        width: fit-content;
+        background-color: rgba(49, 178, 139, 0.2);
+        border: 1px solid rgba(49, 178, 139, 1);
+        border-radius: 10px;
+        padding: 10px;
+    }
+    .dashboard-items {
+        display: flex;
+        flex-direction: column;
+        text-align: right;
+        
+        width: 100%;
+        min-width: 150px;
+        height: 100px;
+        padding: 20px;
+    }
+    
+    .dashboard-items h4 {
+        font-size: 34px;
+        font-weight: 600;
+        color: white;
+    }
+    .dashboard-items p {
+        font-size: 10px;
+        font-weight: 500;
+        color: white;
+    }
+    .row-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+        margin: 10px 0; /* top/bot left/right */
+    }
+    .groups-container {
+        display: flex;
+        flex-direction: row;
+        width: 50%;
+        column-gap: 10px;
+        overflow-y: scroll;
+        scrollbar-width: none;
+    }
+    .group-buttons {
+        min-width: 90px;
+        padding: 10px 15px;
+        background-color: rgba(49, 178, 139, 0);
+        border: 1px solid rgba(49, 178, 139, 0);
+        border-radius: 5px;
+        font-size: 12px;
+        color: white;
+        overflow: hidden;
+    }
+    .group-buttons:active {
+        padding: 10px 15px;
+        background-color: rgba(49, 178, 139, 0.2);
+        border: 1px solid rgba(49, 178, 139, 1);
+        border-radius: 5px;
+        color: white;
+    }
+    .buttons-container {
+        display: flex;
+        flex-direction: row;
+        width: 50%;
+        column-gap: 10px;
+    }
+    #search-container {
+        width: 75%;
+        background-color: rgba(66, 66, 66, 0.2);
+        border: 1px solid #424242;
+        border-radius: 5px;
+    }
+    #search-container input {
+        font-size: 12px;
+        width: 100%;
+        padding: 10px;
+        border: none;
+        background-color: transparent;
+        color: white;
+    }
+    
+    .primary-buttons {
+        width: 200px;
+        padding: 10px;
+        background-color: rgba(49, 178, 139, 0.2);
+        border: 1px solid rgba(49, 178, 139, 1);
+        border-radius: 5px;
+        font-size: 12px;
+        color: white;
+        cursor: pointer;
+    }
+    .table-container {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 500px;
+        max-height: 500px;
+        scrollbar-width: none;
+        overflow-y: scroll;
+        border: 1px solid #424242;
+        border-radius: 5px;
+        padding: 0px 10px 10px 10px;
+    }
+    .table-container table {
+        border-collapse: collapse;
+    }
+    .table-container table thead {
+        text-align: left;
+        position: sticky;
+        top: 0;
+        background-color: #262626;
+    }
+    .table-container table thead th {
+        font-size: 12px;
+        font-weight: 600;
+        color: rgb(177, 177, 177);
+        width: 15%;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    .table-container table tbody tr td{
+        border-top: 1px solid #424242;
+        border-bottom: 1px solid #424242;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        font-size: 12px;
+        color: rgb(177, 177, 177);
+    }
+    .table-container table tbody tr:hover td{
+        background-color: rgb(58, 58, 58);
+        font-weight: 600;
+        color: #E0A60F;
+    }
+    .list-button-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: start;
+        align-items: center;
+        column-gap: 10px;
+        width: 100%;
+    }
+    #edit-item-button {
+        padding: 0px 10px;
+        background-color: transparent;
+        border: none;
+        font-weight: 500;
+        color: #E0A60F;
+        text-decoration: underline;
+        cursor: pointer;
+    }
+    #delete-item-button {
+        padding: 0px 10px;
+        background-color: transparent;
+        border: none;
+        font-weight: 500;
+        color: #DD2D2D;
+        text-decoration: underline;
+        cursor: pointer;
+    }
+    .modal-overlay {
+        position: absolute;
+        top: 0%;
+        left: 0%;
+        display: none;
+        height: 100%;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.803);
+    }
+    .modal-container {
+        position: fixed;
+        z-index: 1;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        overflow: auto;
+        display: flex;
+        flex-direction: column;
+        width: 500px;
+        height: auto;
+        padding: 20px;
+        font-size: 12px;
+        font-weight: 500;
+        color: white;
+        background-color: #262626;
+        border-radius: 5px;
+    }
+    .modal-container input {
+        height: auto;
+        background-color: rgba(66, 66, 66, 0.2);
+        border: 1px solid #424242;
+        border-radius: 5px;
+        padding: 10px;
+        font-size: 12px;
+        color: white;
+        margin: 5px 0;
+    }
+    .select-group-container {
+        height: auto;
+        background-color: rgba(66, 66, 66, 0.2);
+        border: 1px solid #424242;
+        border-radius: 5px;
+        padding: 10px;
+        margin: 10px 0;
+    }
+    .select-group-container select {
+        width: 100%;
+        background-color: transparent;
+        border: none;
+        outline: none;
+        color: white;
+    }
+    .modal-container button{
+        width: 100%;
+    }
+    .modal-container button:last-child {
+        margin: 10px 0;
+        background-color: transparent;
+        border: none;
+        font-size: 12px;
+        color: white;
+        cursor: pointer;
+    }
 }

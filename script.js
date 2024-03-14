@@ -13,14 +13,8 @@ document.getElementById("total-stocks").children[0].innerHTML = stocks;
 function saveData(){
     localStorage.setItem("listData", document.getElementById("list").innerHTML);
 }
-function saveDashboard(){
-    localStorage.setItem("dashboardData", document.getElementById("dashboard").innerHTML);
-}
 function retrieveData(){
     document.getElementById("list").innerHTML = localStorage.getItem("listData");
-}
-function retrieveDashboard(){
-    document.getElementById("dashboard").innerHTML = localStorage.getItem("dashboardData");
 }
 function clearBrowserData(){
     window.localStorage.clear();
@@ -149,6 +143,18 @@ function deleteButton(event){
         updateDashboard();
     }
 }
+function addNewGroup(){
+    var groupNameInput = document.getElementById("group-name");
+
+    if (groupNameInput == ""){
+        alert("Please fill name field");
+    } else {
+        let b = document.createElement("button");
+        b.innerHTML = `${groupNameInput.value}`;
+        b.classList = "group-buttons";
+        document.getElementById("groups-container").appendChild(b);
+    }
+}
 
 //hide unhide add new item modal
 const addBtn = document.getElementById("add-item-button").addEventListener("click", (e) => {
@@ -168,20 +174,12 @@ const addBtn = document.getElementById("add-item-button").addEventListener("clic
     });
 });
 
-// //cancel button for add new item modal. This is different from cancel-update button
-// const modal = document.getElementById("modal-container").addEventListener("click", (e) => {
-//     if (e.target.className === "cancel-button"){
-//         document.getElementById("modal-overlay").style.display = "none";
-//     }
-// });
-
 //add item button
 const addItem = document.getElementById("add-button").addEventListener("click", (e) => {
     getItemValue();
     updateDashboard();
     clearInput();
     saveData();
-    saveDashboard();
 });
 
 //edit/delete item button selector
@@ -190,15 +188,14 @@ const tableButtons = document.getElementById("list").addEventListener("click", (
     editButton(e);
     deleteButton(e);
     saveData();
-    saveDashboard();
 });
 
 //search item input box
 const search = document.getElementById("search-input").addEventListener("keyup", (e) => {
     searchItem();
-})
-//add new group
-const addGroup = document.getElementById("add-group-button").addEventListener("click", (e) => {
+});
+//show/hide group modal
+const showGroupModal = document.getElementById("add-new-group").addEventListener("click", (e) => {
     e.preventDefault();
     document.getElementById("group-modal-overlay").style.display = "block";
 
@@ -207,8 +204,14 @@ const addGroup = document.getElementById("add-group-button").addEventListener("c
             document.getElementById("group-modal-overlay").style.display = "none";
         }
     })
-})
+});
 
+//append new group when clicked
+const addGroupBtn = document.getElementById("add-group-button").addEventListener("click", (e) => {
+    addNewGroup()
+    groupNameInput.value = "";
+});
+
+//retrieve local storage
 retrieveData();
-//retrieveDashboard();
 //clearBrowserData();
