@@ -11,10 +11,18 @@ document.getElementById("all-groups").children[0].innerHTML = groups;
 document.getElementById("total-stocks").children[0].innerHTML = stocks;
 
 function saveData(){
-    localStorage.setItem("listData", document.getElementById("list").innerHTML);
+    localStorage.setItem("listData", document.getElementById("All_group").innerHTML);
+    localStorage.setItem("itemsData", document.getElementById("all-items").children[0].innerHTML);
+    localStorage.setItem("productsData", document.getElementById("all-products").children[0].innerHTML);
+    localStorage.setItem("groupsData", document.getElementById("all-groups").children[0].innerHTML);
+    localStorage.setItem("stocksData", document.getElementById("total-stocks").children[0].innerHTML);
 }
 function retrieveData(){
-    document.getElementById("list").innerHTML = localStorage.getItem("listData");
+    document.getElementById("All_group").innerHTML = localStorage.getItem("listData");
+    document.getElementById("all-items").children[0].innerHTML = localStorage.getItem("itemsData");
+    document.getElementById("all-products").children[0].innerHTML = localStorage.getItem("productsData");
+    document.getElementById("all-groups").children[0].innerHTML = localStorage.getItem("groupsData");
+    document.getElementById("total-stocks").children[0].innerHTML = localStorage.getItem("stocksData");
 }
 function clearBrowserData(){
     window.localStorage.clear();
@@ -35,11 +43,12 @@ var itemQty = document.getElementById("item-quantity");
 var basePrice = document.getElementById("base-price");
 var wholesalePrice = document.getElementById("wholesale-price");
 var retailPrice = document.getElementById("retail-price");
+var groupBelong = document.getElementById("group");
 
 function searchItem(){
-    var searchInput = document.getElementById("search-input");
+    var searchInput = document.getElementById("search-input"); //search input box
     var filter = searchInput.value.toUpperCase();   //Converting the inputed value on textbox to uppercase
-    let list = document.getElementById("list").children;    //access all the "tr" elements 
+    let list = document.getElementById("All_group").children;    //access all the "tr" elements 
 
     for(let i = 0; i < list.length; i++){   //loop to all "tr" elements
         searchNameOfItem = list[i].getElementsByTagName("td")[1]; // access the index 1(item-name) of "td" on the "tr" elements and store it to a new variable
@@ -68,8 +77,16 @@ function getItemValue() {
                             <button id="delete-item-button" class="delete-button">Delete</button>
                         </div></td>`
 
-        document.getElementById("list").appendChild(a);
+        //  document.getElementById("All_group").appendChild(a);
 
+        var belongToGroup = groupBelong.value;
+
+        let existingGroups = document.getElementById("tabcontent").children; //accessing tab container
+        for(let i = 0; i < existingGroups.length; i++){ //loop through all table containers
+            if(belongToGroup == existingGroups[i].id){
+                document.getElementById(`${belongToGroup + "_group"}`).appendChild(a);
+            }
+        }
         i += 1; //every time a new item is added, item # is incremented 
         items = items + 1; //every time a new item is added, this will add to the dashboard count
         products = products + 1; //every time a new item is added, this will add to the dashboard count
@@ -143,16 +160,46 @@ function deleteButton(event){
         updateDashboard();
     }
 }
+//add group tab
 function addNewGroup(){
-    var groupNameInput = document.getElementById("group-name");
+    var groupNameInput = document.getElementById("group-name"); //input box
 
-    if (groupNameInput == ""){
-        alert("Please fill name field");
+    if (groupNameInput.value == "" || groupNameInput.value == "group"){
+        alert("Invalid input");
     } else {
         let b = document.createElement("button");
         b.innerHTML = `${groupNameInput.value}`;
         b.classList = "group-buttons";
         document.getElementById("groups-container").appendChild(b);
+        
+        let c = document.createElement("option"); //add to the list of groups in add item modal
+        c.value = `${groupNameInput.value}`;
+        c.innerHTML = `${groupNameInput.value}`;
+        document.getElementById("group").appendChild(c);
+
+        let d = document.createElement("div");
+        d.classList = "table-container";
+        d.id = `${groupNameInput.value}`;
+        d.innerHTML = ` <table>
+                            <thead>
+                                <th>ITEM #</th>
+                                <th>ITEM NAME</th>
+                                <th>ITEM QUANTITY</th>
+                                <th>BASE PRICE</th>
+                                <th>WHOLESALE PRICE</th>
+                                <th>RETAIL PRICE</th>
+                                <th></th>
+                            </thead>
+                            <tbody id="${groupNameInput.value + "_group"}"></tbody>
+                        </table>`; 
+
+        document.getElementById("tabcontent").appendChild(d);
+
+        d.style.display = "none"; //temporarily hides table after add group
+
+        groupNameInput.value = "";
+
+        console.log(document.getElementById("tabcontent"));
     }
 }
 
@@ -183,7 +230,15 @@ const addItem = document.getElementById("add-button").addEventListener("click", 
 });
 
 //edit/delete item button selector
-const tableButtons = document.getElementById("list").addEventListener("click", (e) => {
+// const tableButtons = document.getElementById("All_group").addEventListener("click", (e) => {
+//     e.preventDefault();
+//     editButton(e);
+//     deleteButton(e);
+//     saveData();
+// });
+
+//edit/delete item button selector
+const editDeleteButtons = document.getElementById("tabcontent").addEventListener("click", (e) => {
     e.preventDefault();
     editButton(e);
     deleteButton(e);
@@ -208,9 +263,26 @@ const showGroupModal = document.getElementById("add-new-group").addEventListener
 
 //append new group when clicked
 const addGroupBtn = document.getElementById("add-group-button").addEventListener("click", (e) => {
-    addNewGroup()
-    groupNameInput.value = "";
+    addNewGroup();
 });
+
+const activeGroup = document.getElementById("groups-container").addEventListener("click", (e) => { //nandito ata yung bug
+    
+    let groupList = document.getElementById("groups-container").children; //group buttons container
+    for(let i = 0; i < groupList.length; i++){ //loop through all group buttons
+        groupList[i].className = groupList[i].className.replace("group-buttons-active", "group-buttons") //change the class of every buttons from group-buttons-active to group-buttons (change button colors to inactive colors)
+    }
+
+    let inactiveList = document.getElementById("tabcontent").children; //accessing tab container
+    for(let j = 0; j < inactiveList.length; j++){ //loop through all table containers
+        inactiveList[j].style.display = "none";
+    }
+
+    e.target.className = "group-buttons-active"; //once the target button is clicked, change the button from inactive to active class
+    let activeTable = document.getElementById(`${e.target.innerHTML}`);
+    activeTable.style.display = "";
+    
+})
 
 //retrieve local storage
 retrieveData();

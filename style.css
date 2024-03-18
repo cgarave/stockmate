@@ -127,7 +127,7 @@ nav ul li:last-child:active{
     color: white;
     overflow: hidden;
 }
-.group-buttons:active {
+.group-buttons-active {
     padding: 10px;
     background-color: rgba(49, 178, 139, 0.2);
     border: 1px solid rgba(49, 178, 139, 1);
@@ -360,7 +360,8 @@ nav ul li:last-child:active{
         color: white;
         overflow: hidden;
     }
-    .group-buttons:active {
+    .group-buttons-active {
+        min-width: 90px;
         padding: 10px 15px;
         background-color: rgba(49, 178, 139, 0.2);
         border: 1px solid rgba(49, 178, 139, 1);
